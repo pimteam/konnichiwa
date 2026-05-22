@@ -8,7 +8,7 @@ class KonnichiwaContent {
 		if($_POST['select_protection_type_'.$content_type.$catpendix] == 'registered') {
 			$protection_details = 'registered';
 		}						
-		else $protection_details = "|".@implode('|', $_POST[$content_type.$catpendix.'_plans'])."|";
+		else $protection_details = "|".implode('|', $_POST[$content_type.$catpendix.'_plans'] ?? [])."|";
 		
 		// record already exists?
 		$exists = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".KONN_CONTENT." WHERE content_type=%s AND content_category=%d", $content_type, $cat_id));
